@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="QualMeuImposto.Mobile.SettingsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Configurações">
+    <VerticalStackLayout Padding="10">
+        <!--  Cotação do Dólar  -->
+        <HorizontalStackLayout>
+            <Label Text="Cotação do Dólar (R$):" />
+            <Entry
+                x:Name="DollarRateEntry"
+                Keyboard="Numeric"
+                Text="5.80" />
+        </HorizontalStackLayout>
+
+        <!--  Porcentagem de Imposto  -->
+        <HorizontalStackLayout>
+            <Label Text="Porcentagem de Imposto (%):" />
+            <Entry
+                x:Name="TaxRateEntry"
+                Keyboard="Numeric"
+                Text="13" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

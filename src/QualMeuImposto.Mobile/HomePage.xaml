@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="QualMeuImposto.Mobile.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Home">
+    <VerticalStackLayout Padding="10">
+
+        <!--  Entrada de dados  -->
+        <HorizontalStackLayout>
+            <Entry x:Name="ProductNameEntry" Placeholder="Nome do Produto" />
+            <Entry
+                x:Name="ProductPriceEntry"
+                Keyboard="Numeric"
+                Placeholder="Preço (USD)" />
+        </HorizontalStackLayout>
+
+        <!--  Botão para adicionar à lista  -->
+        <Button Clicked="OnAddProductClicked" Text="Adicionar Produto" />
+
+        <!--  Lista de produtos  -->
+        <CollectionView x:Name="ProductsList">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItem
+                                BackgroundColor="Red"
+                                Invoked="OnRemoveProduct"
+                                Text="Remover" />
+                        </SwipeView.RightItems>
+                        <Grid Padding="5">
+                            <Label Text="{Binding Name}" />
+                            <Label HorizontalOptions="End" Text="{Binding Price, StringFormat='${0:F2}'}" />
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!--  Resumo  -->
+        <StackLayout Padding="10">
+            <Label Text="{Binding Subtotal, StringFormat='Subtotal: ${0:F2}'}" />
+            <Label Text="{Binding Taxes, StringFormat='Impostos: ${0:F2}'}" />
+            <Label Text="{Binding TotalUSD, StringFormat='Total (USD): ${0:F2}'}" />
+            <Label Text="{Binding TotalBRL, StringFormat='Total (BRL): R${0:F2}'}" />
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>
