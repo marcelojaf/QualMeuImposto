@@ -3,24 +3,72 @@
     x:Class="QualMeuImposto.Mobile.SettingsPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="Configurações">
-    <VerticalStackLayout Padding="10">
-        <!--  Cotação do Dólar  -->
-        <HorizontalStackLayout>
-            <Label Text="Cotação do Dólar (R$):" />
-            <Entry
-                x:Name="DollarRateEntry"
-                Keyboard="Numeric"
-                Text="5.80" />
-        </HorizontalStackLayout>
+    Title="Configurações"
+    BackgroundColor="{AppThemeBinding Light={StaticResource White},
+                                      Dark={StaticResource Black}}">
 
-        <!--  Porcentagem de Imposto  -->
-        <HorizontalStackLayout>
-            <Label Text="Porcentagem de Imposto (%):" />
-            <Entry
-                x:Name="TaxRateEntry"
-                Keyboard="Numeric"
-                Text="13" />
-        </HorizontalStackLayout>
-    </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            <Frame
+                Padding="15"
+                BorderColor="{AppThemeBinding Light={StaticResource Gray300},
+                                              Dark={StaticResource Gray600}}"
+                CornerRadius="10">
+                <VerticalStackLayout Spacing="20">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Configurações Gerais" />
+
+                    <!--  Cotação do Dólar  -->
+                    <VerticalStackLayout Spacing="5">
+                        <Label FontAttributes="Bold" Text="Cotação do Dólar (R$)" />
+                        <Frame
+                            Padding="15,5"
+                            BackgroundColor="{AppThemeBinding Light={StaticResource Gray100},
+                                                              Dark={StaticResource Gray800}}"
+                            BorderColor="{AppThemeBinding Light={StaticResource Gray200},
+                                                          Dark={StaticResource Gray700}}"
+                            CornerRadius="5">
+                            <Entry
+                                x:Name="DollarRateEntry"
+                                BackgroundColor="Transparent"
+                                Keyboard="Numeric"
+                                Text="5.80"
+                                TextChanged="OnDollarRateChanged" />
+                        </Frame>
+                        <Label
+                            FontSize="12"
+                            Text="Valor atual usado para conversão"
+                            TextColor="{AppThemeBinding Light={StaticResource Gray500},
+                                                        Dark={StaticResource Gray400}}" />
+                    </VerticalStackLayout>
+
+                    <!--  Porcentagem de Imposto  -->
+                    <VerticalStackLayout Spacing="5">
+                        <Label FontAttributes="Bold" Text="Porcentagem de Imposto (%)" />
+                        <Frame
+                            Padding="15,5"
+                            BackgroundColor="{AppThemeBinding Light={StaticResource Gray100},
+                                                              Dark={StaticResource Gray800}}"
+                            BorderColor="{AppThemeBinding Light={StaticResource Gray200},
+                                                          Dark={StaticResource Gray700}}"
+                            CornerRadius="5">
+                            <Entry
+                                x:Name="TaxRateEntry"
+                                BackgroundColor="Transparent"
+                                Keyboard="Numeric"
+                                Text="13"
+                                TextChanged="OnTaxRateChanged" />
+                        </Frame>
+                        <Label
+                            FontSize="12"
+                            Text="Taxa aplicada ao subtotal"
+                            TextColor="{AppThemeBinding Light={StaticResource Gray500},
+                                                        Dark={StaticResource Gray400}}" />
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
