@@ -55,13 +55,19 @@
                 BorderColor="{AppThemeBinding Light={StaticResource Gray300},
                                               Dark={StaticResource Gray600}}"
                 CornerRadius="10">
-                <VerticalStackLayout Spacing="10">
+                <Grid RowDefinitions="Auto, Auto">
                     <Label
+                        Grid.Row="0"
                         FontAttributes="Bold"
                         FontSize="18"
                         Text="Produtos" />
-
-                    <CollectionView x:Name="ProductsList">
+                    <CollectionView
+                        x:Name="ProductsList"
+                        Grid.Row="1"
+                        MaximumHeightRequest="200">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
+                        </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <SwipeView>
@@ -102,7 +108,7 @@
                             </StackLayout>
                         </CollectionView.EmptyView>
                     </CollectionView>
-                </VerticalStackLayout>
+                </Grid>
             </Frame>
 
             <!--  Resumo  -->
